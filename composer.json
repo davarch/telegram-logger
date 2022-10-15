@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Davarch\\TelegramLogger\\TelegramLoggerServiceProvider"
+                "Davarch\\TelegramLogger\\ServiceProvider"
             ]
         }
     },
