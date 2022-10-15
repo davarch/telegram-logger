@@ -1,0 +1,36 @@
+{
+    "name": "davarch/telegram-logger",
+    "description": "Telegram Logger for Laravel",
+    "keywords": ["laravel", "logger", "telegram"],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Davarch\\TelegramLogger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tim Davarch",
+            "email": "tim@davarch.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": ">=9.0.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Davarch\\TelegramLogger\\TelegramLoggerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
