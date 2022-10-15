@@ -4,7 +4,7 @@
 
 `composer require davarch/telegram-logger`
 
-`php artisan vendor:publish --provider="Davarch\TelegramLogger\TelegramLoggerServiceProvider"`
+`php artisan telegram-logger:publish`
 
 ### Add to config/logging.php:
 
@@ -19,10 +19,10 @@
 ],
 ```
 
-### Add to .env file:
+### Edit to .env file:
 ```dotenv
-TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN
-TELEGRAM_CHAT_ID=YOUR_CHAT_ID
+TELEGRAM_LOGGER_BOT_TOKEN=YOUR_BOT_TOKEN
+TELEGRAM_LOGGER_CHAT_ID=YOUR_CHAT_ID
 ```
 
 ## Usage

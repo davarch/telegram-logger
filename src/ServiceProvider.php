@@ -7,7 +7,8 @@ use Davarch\TelegramLogger\Console\PublishCommand;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    public function boot(): void {
+    public function boot(): void
+    {
         $this->publishes([
             __DIR__.'/../config/telegram-logger.php' => config_path('telegram-logger.php'),
         ], 'config');
