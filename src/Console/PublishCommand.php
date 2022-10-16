@@ -2,7 +2,7 @@
 
 namespace Davarch\TelegramLogger\Console;
 
-use Davarch\TelegramLogger\ServiceProvider;
+use Davarch\TelegramLogger\TelegramLoggerServiceProvider;
 use Illuminate\Console\Command;
 
 class PublishCommand extends Command
@@ -46,7 +46,7 @@ class PublishCommand extends Command
         }
 
         $this->info('Publishing Telegram Logger config...');
-        $this->call('vendor:publish', ['--provider' => ServiceProvider::class]);
+        $this->call('vendor:publish', ['--provider' => TelegramLoggerServiceProvider::class]);
 
         if (!$this->setEnvValues($env)) {
             return self::FAILURE;

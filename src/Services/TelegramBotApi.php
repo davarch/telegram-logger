@@ -2,35 +2,38 @@
 
 namespace Davarch\TelegramLogger\Services;
 
+use Davarch\TelegramLogger\Contracts\TelegramBotApiContract;
+use Davarch\TelegramLogger\Exceptions\TelegramBotApiException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
-final class TelegramBotApi
+class TelegramBotApi implements TelegramBotApiContract
 {
     private const END_POINT = 'https://api.telegram.org/bot%s/sendMessage';
 
-    public static function sendMessage(string $text, string $chatId = null): bool
+    /**
+     * @throws TelegramBotApiException
+     */
+    public function sendMessage(string $text, string $chatId = null): bool
     {
         try {
-            $response = Http::post(
+            return Http::post(
                 sprintf(self::END_POINT, config('telegram-logger.bot_token')),
                 [
                     'chat_id' => $chatId ?: config('telegram-logger.chat_id'),
-                    'text' => $text,
+                    'parse_mode' => 'MarkdownV2',
+                    'text' => "`$text`"
+                ]
+            )->throw()->successful();
+        } catch (RequestException $exception) {
+            throw new TelegramBotApiException(
+                $exception->getMessage(), $exception->getCode(),
+                [
+                    'url' => self::END_POINT,
+                    'class' => self::class,
+                    'method' => 'sendMessage',
                 ]
             );
-
-            $response->throw();
-
-            return $response->successful();
-        } catch (RequestException $exception) {
-            logger()?->error($exception->getMessage(), [
-                'url' => self::END_POINT,
-                'class' => self::class,
-                'method' => 'sendMessage',
-            ]);
         }
-
-        return false;
     }
 }
