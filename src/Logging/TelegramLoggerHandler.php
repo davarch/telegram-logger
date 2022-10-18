@@ -15,7 +15,7 @@ class TelegramLoggerHandler extends AbstractProcessingHandler
     public function __construct(array $config)
     {
         $format = $config['format'] ?? self::DEFAULT_FORMAT;
-        $this->setFormatter(new LineFormatter($format, 'd.m.Y h:i', ignoreEmptyContextAndExtra: true));
+        $this->setFormatter(new LineFormatter($format, 'd.m.Y H:i', ignoreEmptyContextAndExtra: true));
 
         $level = Logger::toMonologLevel($config['level']);
 
