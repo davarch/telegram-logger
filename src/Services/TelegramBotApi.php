@@ -26,13 +26,15 @@ class TelegramBotApi implements TelegramBotApiContract
                 ]
             )->throw()->successful();
         } catch (RequestException $exception) {
-            throw new TelegramBotApiException(
-                $exception->getMessage(), $exception->getCode(),
-                [
-                    'url' => self::END_POINT,
-                    'class' => self::class,
-                    'method' => 'sendMessage',
-                ]
+            report(
+                new TelegramBotApiException(
+                    $exception->getMessage(), $exception->getCode(),
+                    [
+                        'url' => self::END_POINT,
+                        'class' => self::class,
+                        'method' => 'sendMessage',
+                    ]
+                )
             );
         }
     }
