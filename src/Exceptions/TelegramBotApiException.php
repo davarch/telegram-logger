@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Davarch\TelegramLogger\Exceptions;
 
 use Exception;

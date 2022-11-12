@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Davarch\TelegramLogger\Contracts;
 
 use Davarch\TelegramLogger\Exceptions\TelegramBotApiException;

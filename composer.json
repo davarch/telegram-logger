@@ -3,11 +3,6 @@
     "description": "Telegram Logger for Laravel",
     "keywords": ["laravel", "logger", "telegram"],
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Davarch\\TelegramLogger\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Tim Davarch",
@@ -19,7 +14,28 @@
         "laravel/framework": ">=9.0.0"
     },
     "require-dev": {
+        "nunomaduro/collision": "^6.3",
+        "orchestra/testbench": "^7.12",
+        "phpunit/phpunit": "^9.5.10",
         "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "Davarch\\TelegramLogger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": [
+            "@php vendor/bin/testbench package:test"
+        ]
     },
     "extra": {
         "laravel": {

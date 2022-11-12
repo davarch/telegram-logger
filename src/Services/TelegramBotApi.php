@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Davarch\TelegramLogger\Services;
 
 use Davarch\TelegramLogger\Contracts\TelegramBotApiContract;
@@ -36,6 +38,13 @@ class TelegramBotApi implements TelegramBotApiContract
                     ]
                 )
             );
+
+            return false;
         }
+    }
+
+    public static function fake(): TelegramBotApiFake
+    {
+        return app()->instance(TelegramBotApiContract::class, new TelegramBotApiFake());
     }
 }
